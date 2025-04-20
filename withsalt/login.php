@@ -2,26 +2,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Registration</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:rgb(255, 254, 254);
+            background-color:rgb(230, 222, 222);
             margin: 0;
             padding: 0;
         }
 
-        h2 {
+        h1 {
             text-align: center;
             margin-top: 50px;
-            color: #333;
+            color: black;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             margin: 20px auto;
             padding: 30px;
             background-color: #fff;
@@ -41,7 +41,7 @@
             color: #555;
         }
 
-        input[type="text"], input[type="password"], select {
+        input[type="text"], input[type="password"] {
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -51,7 +51,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #787e78;
+            background-color:rgb(106, 171, 108);
             color: white;
             border: none;
             border-radius: 5px;
@@ -63,46 +63,50 @@
             opacity: 0.9;
         }
 
+        .error {
+            color: #f44336;
+            text-align: center;
+            margin-top: 10px;
+        }
+
         .link {
             text-align: center;
             margin-top: 20px;
         }
 
         .link a {
-            color: #4CAF50;
+            color:rgb(99, 181, 102);
             text-decoration: none;
         }
 
         .link a:hover {
             text-decoration: underline;
         }
-
-        .error {
-            color: #f44336;
-            text-align: center;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
 
-    <h2>Registration Form</h2>
+    <h1>Login Page</h1>
 
     <div class="container">
-        <form action="register_no_salt.php" method="post">
-
-            <label for="name">Username:</label>
-            <input type="text" id="username" name="username" required><br>
+        <form action="login_with_salt.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
+            <input type="password" id="password" name="password" required>
 
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
+
+            <?php if ($error): ?>
+                <div class="error"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <div class="link">
+                <p>Not registered? <a href="register.html">Register here</a></p>
+            </div>
         </form>
+    </div>
 
-    </div>
-    <div class="link">
-        <p>Already have an account? <a href="login.php">Login here</a></p>
-    </div>
 </body>
 </html>
